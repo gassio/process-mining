@@ -1,0 +1,41 @@
+Github REST API Calls
+
+- List repo events
+https://api.github.com/repos/gassio/HRATCH/issues/events
+
+- List repo issues
+https://api.github.com/search/issues?q=repo:gassio/HRATCH+type:issue
+
+- List issue events
+https://api.github.com/repos/gassio/HRATCH/issues/1/events
+
+
+RATE LIMIT
+Github API
+For unauthenticated requests, the rate limit allows for up to 60 requests per hour.
+For API requests using Basic Authentication or OAuth, you can make up to 5,000 requests per hour.
+Search API
+For requests using Basic Authentication, OAuth, or client ID and secret, you can make up to 30 requests per minute. 
+For unauthenticated requests, the rate limit allows you to make up to 10 requests per minute.
+
+
+ISSUE EVENT TYPES
+assigned
+closed
+reopened
+subscribed
+mentioned
+moved_columns_in_project
+head_ref_force_pushed
+labeled
+added_to_project
+review_requested
+referenced
+merged
+ready_for_review
+
+
+FAMOUS GITHUB PROJECTS
+https://analyticsindiamag.com/hail-to-open-source-the-10-most-popular-github-repos-from-2019/
+https://hackernoon.com/githubs-top-100-most-valuable-repositories-out-of-96-million-bb48caa9eb0b
+https://www.attosol.com/top-20-projects-on-github/
