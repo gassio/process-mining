@@ -20,19 +20,60 @@ For unauthenticated requests, the rate limit allows you to make up to 10 request
 
 
 ISSUE EVENT TYPES
-assigned
-closed
-reopened
-subscribed
-mentioned
-moved_columns_in_project
-head_ref_force_pushed
-labeled
+Αυτό που μας ενδιαφέρει ουσιαστικά είναι τι σημαίνουν τα Issue Event Types (τα labels) τα οποία προκαλούνται από την δραστηριότητα (activity) στα issues ενός έργου.
+Το Github χρησιμοποιεί 45 event types για τα issues των έργων του.
+https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/issue-event-types
+
+Τα event types είναι: 
+
 added_to_project
-review_requested
-referenced
+assigned
+automatic_base_change_failed
+automatic_base_change_succeeded
+base_ref_changed
+Event object properties
+closed
+commented
+committed
+connected
+convert_to_draft
+converted_note_to_issue
+cross-referenced
+demilestoned
+deployed
+deployment_environment_changed
+disconnected
+head_ref_deleted
+head_ref_restored
+labeled
+locked
+mentioned
+marked_as_duplicate
 merged
+milestoned
+moved_columns_in_project
+pinned
 ready_for_review
+referenced
+removed_from_project
+renamed
+reopened
+review_dismissed
+review_requested
+review_request_removed
+reviewed
+subscribed
+transferred
+unassigned
+unlabeled
+unlocked
+unmarked_as_duplicate
+unpinned
+unsubscribed
+user_blocked
+ 
+Issue events are triggered by activity in issues and pull requests and are available in the Issue Events API and the Timeline Events API. 
+
 
 
 FAMOUS GITHUB PROJECTS
