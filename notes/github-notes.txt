@@ -80,3 +80,15 @@ FAMOUS GITHUB PROJECTS
 https://analyticsindiamag.com/hail-to-open-source-the-10-most-popular-github-repos-from-2019/
 https://hackernoon.com/githubs-top-100-most-valuable-repositories-out-of-96-million-bb48caa9eb0b
 https://www.attosol.com/top-20-projects-on-github/
+
+
+Επιλογή έργων με βάση
+
+Φύση του λογισμικού
+1. Developer tools (editors, etc)
+2. Libraries
+3. Software Products
+
+Τον δημιουργό
+1. Έργο εταιρείας
+2. Έργο κοινότητας
