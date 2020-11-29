@@ -1,10 +1,7 @@
 (function () {
 
-  const username = 'gassio'
-  const githubToken = 'ea41eb5c55dfca4145456b9619c00f0be6da4982'
-
   var theData = {
-    repo: ['tensorflow/tensorflow', 'twbs/bootstrap', 'microsoft/vscode'],    
+    repo: 'riot/riot',
     page: 0,
     perPage: 100,
   }
@@ -49,12 +46,12 @@
     return result
   }
 
-  var createFile = function(content) {
+  var createFile = function(content, filename) {
     var myBlob = new Blob([content], {type: 'text/plain'});
     var url = window.URL.createObjectURL(myBlob);
     var anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "githubtestapi.csv";
+    anchor.download = filename // "githubtestapi.csv";
     anchor.click();
     window.URL.revokeObjectURL(url);
     document.removeChild(anchor);
@@ -64,33 +61,41 @@
     let totalPages = 100
     let jsonData = []
     
-    let authString = `${username}:${githubToken}`
-
     let h = new Headers();
-    h.append('Authorization', 'Basic ' + window.btoa('gassio:ea41eb5c55dfca4145456b9619c00f0be6da4982'))
+    h.append('Authorization', 'Basic ' + window.btoa('gassio:97fd424ac18f253edcc56a8dac3673fc7dd44288'))
 
-    for (let k=0; k < totalPages; k++) {
-      theData.page++
+    
+      for (let k=0; k < totalPages; k++) {
+        theData.page++
 
-      fetch('https://api.github.com/repos/' + theData.repo[1] + '/issues/events' +  '?per_page=' + theData.perPage + '&page=' + theData.page, {
-        method: 'GET',
-        headers: h,
-      })
-        .then(response => response.json())
-        .then(data => {
-          for (let i=0; i < data.length; i++) {
-              // console.log(data[i].id + ' ' + data[i].issue.number + ' | ' + data[i].event + ' | ' + data[i].created_at + ' | ' + data[i].actor.login + ' | ' + data[i].issue.title)
-              let line = { 'EVENT_ID': data[i].id, 'ISSUE_ID': data[i].issue.number, 'TYPE': data[i].event, 'CREATION_DATE': data[i].created_at, 'ACTOR': data[i].actor.login, 'TITLE': data[i].issue.title }
-              jsonData.push(line) 
-          }
-          if (k == totalPages-1) {
-            console.log(k)
-            let fileContent = arrayToCSV(jsonData, '\t', '\n')
-            console.log(fileContent)
-            createFile(fileContent)
-          }
-        });
-    }
+        fetch('https://api.github.com/repos/' + theData.repo + '/issues/events' +  '?per_page=' + theData.perPage + '&page=' + theData.page, {
+          method: 'GET',
+          headers: h,
+        })
+          .then(response => response.json())
+          .then(data => {
+            for (let i=0; i < data.length; i++) {
+              try {
+                let line = { 
+                  'EVENT_ID': data[i].id,
+                  'ISSUE_ID': data[i].issue.number,
+                  'TYPE': data[i].event,
+                  'CREATION_DATE': data[i].created_at,
+                  'ACTOR': data[i].actor.login,
+                  'TITLE': data[i].issue.title
+                }
+                jsonData.push(line)
+              } catch (err) {
+                console.log(err)
+              }
+            }
+            if (k == totalPages - 1) {
+              let fileContent = arrayToCSV(jsonData, '\t', '\n')
+              let filename = theData.repo.split('/')[1] + ".csv"
+              createFile(fileContent, filename)
+            }
+          });
+      }
 
   }
 
